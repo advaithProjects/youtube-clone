@@ -40,84 +40,82 @@ const PlayVideo = () => {
           <span>1M subscribers</span>
         </div>
         <button>Subscribe</button>
-        <div className="vid-description">
-          <p>Channal that makes learning Easy </p>
-          <p>
-            Subscribe Code Spark to Watch More Tutorials on web development{" "}
-          </p>
-          <hr />
-          <h4>4 Comments</h4>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>
-                Adavith <span>1 day ago</span>
-                <p>
-                  A global computer network providing a variety of information
-                  and communtcation of interconnected networks using stanardized
-                  communication protocols.
-                </p>
-                <div className="comment-action">
-                  <img src={like} alt="" />
-                  <span>244</span>
-                  <img src={dislike} alt="" />
-                </div>
-              </h3>
-            </div>
+      </div>
+      <div className="vid-description">
+        <p>Channal that makes learning Easy </p>
+        <p>Subscribe Code Spark to Watch More Tutorials on web development </p>
+        <hr />
+        <h4>4 Comments</h4>
+        <div className="comment">
+          <img src={user_profile} alt="" />
+          <div>
+            <h3>
+              Adavith <span>1 day ago</span>
+              <p>
+                A global computer network providing a variety of information and
+                communtcation of interconnected networks using stanardized
+                communication protocols.
+              </p>
+              <div className="comment-action">
+                <img src={like} alt="" />
+                <span>244</span>
+                <img src={dislike} alt="" />
+              </div>
+            </h3>
           </div>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>
-                Adavith <span>1 day ago</span>
-                <p>
-                  A global computer network providing a variety of information
-                  and communtcation of interconnected networks using stanardized
-                  communication protocols.
-                </p>
-                <div className="comment-action">
-                  <img src={like} alt="" />
-                  <span>244</span>
-                  <img src={dislike} alt="" />
-                </div>
-              </h3>
-            </div>
+        </div>
+        <div className="comment">
+          <img src={user_profile} alt="" />
+          <div>
+            <h3>
+              Adavith <span>1 day ago</span>
+              <p>
+                A global computer network providing a variety of information and
+                communtcation of interconnected networks using stanardized
+                communication protocols.
+              </p>
+              <div className="comment-action">
+                <img src={like} alt="" />
+                <span>244</span>
+                <img src={dislike} alt="" />
+              </div>
+            </h3>
           </div>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>
-                Adavith <span>1 day ago</span>
-                <p>
-                  A global computer network providing a variety of information
-                  and communtcation of interconnected networks using stanardized
-                  communication protocols.
-                </p>
-                <div className="comment-action">
-                  <img src={like} alt="" />
-                  <span>244</span>
-                  <img src={dislike} alt="" />
-                </div>
-              </h3>
-            </div>
+        </div>
+        <div className="comment">
+          <img src={user_profile} alt="" />
+          <div>
+            <h3>
+              Adavith <span>1 day ago</span>
+              <p>
+                A global computer network providing a variety of information and
+                communtcation of interconnected networks using stanardized
+                communication protocols.
+              </p>
+              <div className="comment-action">
+                <img src={like} alt="" />
+                <span>244</span>
+                <img src={dislike} alt="" />
+              </div>
+            </h3>
           </div>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>
-                Adavith <span>1 day ago</span>
-                <p>
-                  A global computer network providing a variety of information
-                  and communtcation of interconnected networks using stanardized
-                  communication protocols.
-                </p>
-                <div className="comment-action">
-                  <img src={like} alt="" />
-                  <span>244</span>
-                  <img src={dislike} alt="" />
-                </div>
-              </h3>
-            </div>
+        </div>
+        <div className="comment">
+          <img src={user_profile} alt="" />
+          <div>
+            <h3>
+              Adavith <span>1 day ago</span>
+              <p>
+                A global computer network providing a variety of information and
+                communtcation of interconnected networks using stanardized
+                communication protocols.
+              </p>
+              <div className="comment-action">
+                <img src={like} alt="" />
+                <span>244</span>
+                <img src={dislike} alt="" />
+              </div>
+            </h3>
           </div>
         </div>
       </div>
