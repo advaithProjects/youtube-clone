@@ -19,6 +19,62 @@ const Recommended = () => {
           <p>199K Views</p>
         </div>
       </div>
+      <div className="side-video-list">
+        <img src={thumbnail2} alt="" />
+        <div className="vid-info">
+          <h4>Best channel that help you to be a web developer</h4>
+          <p>Code Spark</p>
+          <p>199K Views</p>
+        </div>
+      </div>
+      <div className="side-video-list">
+        <img src={thumbnail3} alt="" />
+        <div className="vid-info">
+          <h4>Best channel that help you to be a web developer</h4>
+          <p>Code Spark</p>
+          <p>199K Views</p>
+        </div>
+      </div>
+      <div className="side-video-list">
+        <img src={thumbnail4} alt="" />
+        <div className="vid-info">
+          <h4>Best channel that help you to be a web developer</h4>
+          <p>Code Spark</p>
+          <p>199K Views</p>
+        </div>
+      </div>
+      <div className="side-video-list">
+        <img src={thumbnail5} alt="" />
+        <div className="vid-info">
+          <h4>Best channel that help you to be a web developer</h4>
+          <p>Code Spark</p>
+          <p>199K Views</p>
+        </div>
+      </div>
+      <div className="side-video-list">
+        <img src={thumbnail6} alt="" />
+        <div className="vid-info">
+          <h4>Best channel that help you to be a web developer</h4>
+          <p>Code Spark</p>
+          <p>199K Views</p>
+        </div>
+      </div>
+      <div className="side-video-list">
+        <img src={thumbnail7} alt="" />
+        <div className="vid-info">
+          <h4>Best channel that help you to be a web developer</h4>
+          <p>Code Spark</p>
+          <p>199K Views</p>
+        </div>
+      </div>
+      <div className="side-video-list">
+        <img src={thumbnail8} alt="" />
+        <div className="vid-info">
+          <h4>Best channel that help you to be a web developer</h4>
+          <p>Code Spark</p>
+          <p>199K Views</p>
+        </div>
+      </div>
     </div>
   );
 };
