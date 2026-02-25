@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./PlayVideo.css";
-import { API_KEY } from "../../data";
+import { API_KEY, value_converter } from "../../data";
 import video1 from "../../assets/video.mp4";
 import like from "../../assets/like.png";
 import dislike from "../../assets/dislike.png";
@@ -8,13 +8,14 @@ import share from "../../assets/share.png";
 import save from "../../assets/save.png";
 import jack from "../../assets/jack.png";
 import user_profile from "../../assets/user_profile.jpg";
+import moment from "moment";
 
 const PlayVideo = ({ VideoId }) => {
   const [apiData, setApiData] = useState(null);
 
   const fetchVideoData = async () => {
     // Fetching Videos Data
-    const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=${VideoId}&key=${API_KEY}`;
+    const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${VideoId}&key=${API_KEY}`;
     await fetch(videoDetails_url)
       .then((res) => res.json())
       .then((data) => setApiData(data.items[0]));
@@ -37,7 +38,10 @@ const PlayVideo = ({ VideoId }) => {
       ></iframe>
       <h3>{apiData ? apiData.snippet.title : "Title Here"} </h3>
       <div className="play-video-info">
-        <p>1525 Views &bull; 2 days ago</p>
+        <p>
+          {apiData ? value_converter(apiData.statistics.viewCount) : "16K"}
+          Views &bull; {apiData?moment(apiData.snippet.publishedAt).fromNow():""}
+        </p>
         <div>
           <span>
             <img src={like} alt="" />
