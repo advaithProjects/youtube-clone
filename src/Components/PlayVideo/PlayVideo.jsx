@@ -12,6 +12,7 @@ import moment from "moment";
 
 const PlayVideo = ({ VideoId }) => {
   const [apiData, setApiData] = useState(null);
+  const [channelData, setChannelData] = useState(null);
 
   const fetchVideoData = async () => {
     // Fetching Videos Data
@@ -20,9 +21,20 @@ const PlayVideo = ({ VideoId }) => {
       .then((res) => res.json())
       .then((data) => setApiData(data.items[0]));
   };
+
+  const fetchOtherData = async () => {
+    // Fetching Channel Data
+    const channelData_url = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apiData.snippet.channelId}&key=${API_KEY}`;
+    await fetch(channelData_url)
+      .then((res) => res.json())
+      .then((data) => setChannelData(data.items[0]));
+  };
   useEffect(() => {
     fetchVideoData();
   }, []);
+  useEffect(() => {
+    fetchOtherData();
+  }, [apiData]);
 
   return (
     <div className="play-video">
@@ -40,7 +52,8 @@ const PlayVideo = ({ VideoId }) => {
       <div className="play-video-info">
         <p>
           {apiData ? value_converter(apiData.statistics.viewCount) : "16K"}
-          Views &bull; {apiData?moment(apiData.snippet.publishedAt).fromNow():""}
+          Views &bull;
+          {apiData ? moment(apiData.snippet.publishedAt).fromNow() : ""}
         </p>
         <div>
           <span>
@@ -62,18 +75,32 @@ const PlayVideo = ({ VideoId }) => {
       </div>
       <hr />
       <div className="publisher">
-        <img src={jack} alt="" />
+        <img
+          src={channelData ? channelData.snippet.thumbnails.default.url : ""}
+          alt=""
+        />
         <div>
-          <p>Code Spark</p>
-          <span>1M subscribers</span>
+          <p> {apiData ? apiData.snippet.channelTitle : ""} </p>
+          <span>
+            {channelData
+              ? value_converter(channelData.statistics.subscriberCount)
+              : "1M"}
+            {" Subscribers"}
+          </span>
         </div>
         <button>Subscribe</button>
       </div>
       <div className="vid-description">
-        <p>Channal that makes learning Easy </p>
-        <p>Subscribe Code Spark to Watch More Tutorials on web development </p>
+        <p>
+          {apiData
+            ? apiData.snippet.description.slice(0, 250)
+            : "Description Here"}
+        </p>
         <hr />
-        <h4>4 Comments</h4>
+        <h4>
+          {apiData ? value_converter(apiData.statistics.commentCount) : 102}
+          {" Comments"}
+        </h4>
         <div className="comment">
           <img src={user_profile} alt="" />
           <div>
