@@ -12,6 +12,7 @@ import moment from "moment";
 
 const PlayVideo = ({ VideoId }) => {
   const [apiData, setApiData] = useState(null);
+
   const [channelData, setChannelData] = useState(null);
 
   const fetchVideoData = async () => {
@@ -58,7 +59,7 @@ const PlayVideo = ({ VideoId }) => {
         <div>
           <span>
             <img src={like} alt="" />
-            125
+            {apiData ? value_converter(apiData.statistics.likeCount) : "155"}
           </span>
           <span>
             <img src={dislike} alt="" />1
