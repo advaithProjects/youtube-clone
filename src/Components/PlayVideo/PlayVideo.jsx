@@ -15,6 +15,8 @@ const PlayVideo = ({ VideoId }) => {
 
   const [channelData, setChannelData] = useState(null);
 
+  const [commentData, setCommentData] = useState([]);
+
   const fetchVideoData = async () => {
     // Fetching Videos Data
     const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${VideoId}&key=${API_KEY}`;
@@ -29,10 +31,18 @@ const PlayVideo = ({ VideoId }) => {
     await fetch(channelData_url)
       .then((res) => res.json())
       .then((data) => setChannelData(data.items[0]));
+
+    // fetching Comment Data
+    const comment_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${VideoId}&key=${API_KEY}`;
+    await fetch(comment_url)
+      .then((res) => res.json())
+      .then((data) => setCommentData(data.items));
   };
+
   useEffect(() => {
     fetchVideoData();
   }, []);
+
   useEffect(() => {
     fetchOtherData();
   }, [apiData]);
@@ -102,78 +112,32 @@ const PlayVideo = ({ VideoId }) => {
           {apiData ? value_converter(apiData.statistics.commentCount) : 102}
           {" Comments"}
         </h4>
-        <div className="comment">
-          <img src={user_profile} alt="" />
-          <div>
-            <h3>
-              Adavith <span>1 day ago</span>
-              <p>
-                A global computer network providing a variety of information and
-                communtcation of interconnected networks using stanardized
-                communication protocols.
-              </p>
-              <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
+        {commentData.map((item, index) => {
+          return (
+            <div key={index} className="comment">
+              <img
+                src={item.snippet.topLevelComment.snippet.authorProfileImageUrl}
+                alt=""
+              />
+              <div>
+                <h3>
+                  {item.snippet.topLevelComment.snippet.authorDisplayName}{" "}
+                  <span>1 day ago</span>
+                </h3>
+                <p>{item.snippet.topLevelComment.snippet.textDisplay}</p>
+                <div className="comment-action">
+                  <img src={like} alt="" />
+                  <span>
+                    {value_converter(
+                      item.snippet.topLevelComment.snippet.likeCount,
+                    )}
+                  </span>
+                  <img src={dislike} alt="" />
+                </div>
               </div>
-            </h3>
-          </div>
-        </div>
-        <div className="comment">
-          <img src={user_profile} alt="" />
-          <div>
-            <h3>
-              Adavith <span>1 day ago</span>
-              <p>
-                A global computer network providing a variety of information and
-                communtcation of interconnected networks using stanardized
-                communication protocols.
-              </p>
-              <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-              </div>
-            </h3>
-          </div>
-        </div>
-        <div className="comment">
-          <img src={user_profile} alt="" />
-          <div>
-            <h3>
-              Adavith <span>1 day ago</span>
-              <p>
-                A global computer network providing a variety of information and
-                communtcation of interconnected networks using stanardized
-                communication protocols.
-              </p>
-              <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-              </div>
-            </h3>
-          </div>
-        </div>
-        <div className="comment">
-          <img src={user_profile} alt="" />
-          <div>
-            <h3>
-              Adavith <span>1 day ago</span>
-              <p>
-                A global computer network providing a variety of information and
-                communtcation of interconnected networks using stanardized
-                communication protocols.
-              </p>
-              <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-              </div>
-            </h3>
-          </div>
-        </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
